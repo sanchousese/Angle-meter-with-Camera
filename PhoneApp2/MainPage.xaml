@@ -1,0 +1,31 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="PhoneApp2.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Landscape" Orientation="Landscape"
+    shell:SystemTray.IsVisible="False">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Rectangle Name="CameraLayout" HorizontalAlignment="Right" Height="480" Stroke="Black" VerticalAlignment="Top" Width="776">
+                <Rectangle.Fill>
+                    <VideoBrush x:Name="viewfinderBrush"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Image Canvas.Left="432" Canvas.Top="122" Margin="0,86,0,9" Source="Assets/Transportir.gif"/>
+            <TextBlock x:Name="textAngle" Canvas.Left="275" TextWrapping="Wrap" Text="0" Canvas.Top="102" Foreground="Black" FontSize="40" Margin="278,39,202,394"/>
+            <Canvas Name="MyCanvas" Background="Transparent" HorizontalAlignment="Left" Height="459" Margin="0,11,0,0" VerticalAlignment="Top" Width="776"/>
+            <Button x:Name="CameraButton" Content="Camera" HorizontalAlignment="Left" Margin="574,10,0,0" VerticalAlignment="Top" Click="CameraButton_Click" Background="#FFFD0202"/>
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

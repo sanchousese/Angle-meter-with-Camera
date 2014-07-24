@@ -16,6 +16,11 @@ namespace PhoneApp2
 {
     public partial class MainPage : PhoneApplicationPage
     {
+
+        private Point[] currPoints = new Point[2];
+        private bool isEditing = false;
+        int index;
+
         public MainPage()
         {
             InitializeComponent();
@@ -25,37 +30,81 @@ namespace PhoneApp2
             Touch.FrameReported += new TouchFrameEventHandler(Touch_FrameReported);
 
             viewfinderBrush.SetSource(CameraSingleton.getInstance());
+            CameraLayout.Visibility = CameraSingleton.getCondition();
         }
 
         private void Touch_FrameReported(object sender, TouchFrameEventArgs e)
         {
-            int pointsNumber = e.GetTouchPoints(MyCanvas).Count;
-            TouchPointCollection pointCollection = e.GetTouchPoints(MyCanvas);
+           int pointsNumber = e.GetTouchPoints(MyCanvas).Count;
+           TouchPointCollection pointCollection = e.GetTouchPoints(MyCanvas);
 
             MyCanvas.Children.Clear();
 
             if (pointsNumber == 1)
             {
                 Point point = pointCollection[0].Position;
-                DrawOnCanvas.touching(point);
-                textAngle.Text = AngleCounter.calculateAngle(point, MyCanvas) + "'";
+
+                if (isEditing)
+                {
+                    currPoints[index] = point;
+                    showPoints();
+                }
+
+
+                for (int i = 0; i < 2; i++)
+                {
+                    if (isIntersect(point, currPoints[i]))
+                    {
+                        currPoints[i] = point;
+
+                        showPoints();
+
+                        index = i;
+                        isEditing = true;
+
+                        return;
+                    }
+
+                }
+
+                currPoints = new Point[2];
+                showPoint(point);
             }
             else
             {
-                Point first = pointCollection[0].Position;
-                Point second = pointCollection[1].Position;
-
-                DrawOnCanvas.touching(first);
-                DrawOnCanvas.touching(second);
-
-                textAngle.Text = AngleCounter.calculateAngle(first, second, MyCanvas) + "'";
+                currPoints[0] = pointCollection[0].Position;
+                currPoints[1] = pointCollection[1].Position;
+                showPoints();
             }
         }
 
+        private void showPoint(Point point)
+        {
+            DrawOnCanvas.touching(point);
+            textAngle.Text = AngleCounter.calculateAngle(point, MyCanvas) + "'";
+        }
+
+        private void showPoints()
+        {
+            DrawOnCanvas.touching(currPoints[0]);
+            DrawOnCanvas.touching(currPoints[1]);
+
+            textAngle.Text = AngleCounter.calculateAngle(currPoints[0], currPoints[1], MyCanvas) + "'";
+        }
+
+        private bool isIntersect(Point first, Point second)
+        {
+            return Math.Abs(first.X - second.X) <= 30 && Math.Abs(first.Y - second.Y) <= 30;
+        }
 
         private void CameraButton_Click(object sender, RoutedEventArgs e)
         {
             CameraLayout.Visibility = CameraSingleton.getCondition();
+        }
+
+        private void MyCanvas_MouseLeave(object sender, MouseEventArgs e)
+        {
+            isEditing = false;
         }
 
     }

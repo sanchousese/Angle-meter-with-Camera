@@ -15,7 +15,7 @@ namespace goniometer.view
     {
 
         private static Canvas canvas;
-        private const double radiusPoint = 20;
+        private const double radiusPoint = 30;
 
 
         private DrawOnCanvas(Canvas canvas){}

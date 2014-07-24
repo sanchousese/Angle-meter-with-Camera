@@ -23,7 +23,7 @@
             </Rectangle>
             <Image Canvas.Left="432" Canvas.Top="122" Margin="0,86,0,9" Source="Assets/Transportir.gif"/>
             <TextBlock x:Name="textAngle" Canvas.Left="275" TextWrapping="Wrap" Text="0" Canvas.Top="102" Foreground="Black" FontSize="40" Margin="278,39,202,394"/>
-            <Canvas Name="MyCanvas" Background="Transparent" HorizontalAlignment="Left" Height="459" Margin="0,11,0,0" VerticalAlignment="Top" Width="776"/>
+            <Canvas Name="MyCanvas" Background="Transparent" HorizontalAlignment="Left" Height="459" Margin="0,11,0,0" VerticalAlignment="Top" Width="776" MouseLeave="MyCanvas_MouseLeave"/>
             <Button x:Name="CameraButton" Content="Camera" HorizontalAlignment="Left" Margin="574,10,0,0" VerticalAlignment="Top" Click="CameraButton_Click" Background="#FFFD0202"/>
         </Grid>
     </Grid>

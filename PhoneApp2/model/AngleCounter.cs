@@ -10,20 +10,25 @@ namespace goniometer.model
 {
     class AngleCounter
     {
-        public static double calculateAngle(Point first, Point middle, Point second)
+        public static double calculateAngle(Point first, Canvas canvas)
+        {
+            Point second = new Point(0, canvas.Height);
+
+            return calculateAngle(first, second, canvas);
+        }
+
+        public static double calculateAngle(Point first, Point second, Canvas canvas)
+        {
+            Point middle = new Point(canvas.Width / 2, canvas.Height);
+            return calculateAngle(first, middle, second);
+        }
+
+        private static double calculateAngle(Point first, Point middle, Point second)
         {
             Point alphaVector = new Point(first.X - middle.X, first.Y - middle.Y);
             Point betaVector = new Point(second.X - middle.X, second.Y - middle.Y);
 
             return RadianToDegree(Math.Acos(productVectors(alphaVector, betaVector) / (vectorLength(alphaVector) * vectorLength(betaVector))));
-        }
-
-        public static double calculateAngle(Point first, Canvas canvas)
-        {
-            Point middle = new Point(canvas.Width / 2, canvas.Height);
-            Point second = new Point(0, canvas.Height);
-
-            return calculateAngle(first, middle, second);
         }
 
         private static double productVectors(Point alphaVector, Point betaVector)

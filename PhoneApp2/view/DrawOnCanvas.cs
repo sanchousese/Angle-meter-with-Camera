@@ -14,25 +14,25 @@ namespace goniometer.view
     class DrawOnCanvas
     {
 
-        private Canvas canvas;
-        private double radiusPoint = 10;
+        private static Canvas canvas;
+        private const double radiusPoint = 20;
 
 
-        public DrawOnCanvas(Canvas canvas)
+        private DrawOnCanvas(Canvas canvas){}
+
+        public static void setCanvas(Canvas thatCanvas)
         {
-            this.canvas = canvas;
+            canvas = thatCanvas;
         }
 
-
-        public void touching(System.Windows.Point point)
+        public static void touching(System.Windows.Point point)
         {
             drawLineTo(point);
 
             drawPoint(point);
         }
 
-
-        private void drawPoint(Point point)
+        private static void drawPoint(Point point)
         {
             Ellipse ellipse = new Ellipse();
             ellipse.Fill = new SolidColorBrush(Colors.Green);
@@ -43,7 +43,7 @@ namespace goniometer.view
             canvas.Children.Add(ellipse);
         }
 
-        private void drawLineTo(Point point)
+        private static void drawLineTo(Point point)
         {
             Line line = new Line();
             line.Stroke = new SolidColorBrush(Colors.Green);

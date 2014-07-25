@@ -28,10 +28,20 @@ namespace PhoneApp2
 
             DrawOnCanvas.setCanvas(MyCanvas);
 
+            this.OrientationChanged +=
+             new EventHandler<OrientationChangedEventArgs>(OnOrientationChanged);
             Touch.FrameReported += new TouchFrameEventHandler(Touch_FrameReported);
 
             viewfinderBrush.SetSource(CameraSingleton.getInstance());
             CameraLayout.Visibility = CameraSingleton.getCondition();
+        }
+
+        private void OnOrientationChanged(object sender, OrientationChangedEventArgs e)
+        {
+            if (e.Orientation == PageOrientation.LandscapeRight)
+                rotateTransform.Angle = 180;
+            else
+                rotateTransform.Angle = 0;
         }
 
         private void Touch_FrameReported(object sender, TouchFrameEventArgs e)

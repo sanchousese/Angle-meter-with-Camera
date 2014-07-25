@@ -15,16 +15,16 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="White">
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <Rectangle Name="CameraLayout" HorizontalAlignment="Right" Height="480" Stroke="Black" VerticalAlignment="Top" Width="776">
+        <Grid x:Name="ContentPanel" Margin="12,0,10,0">
+            <Rectangle Name="CameraLayout" Stroke="Black" >
                 <Rectangle.Fill>
                     <VideoBrush x:Name="viewfinderBrush"/>
                 </Rectangle.Fill>
             </Rectangle>
-            <Image Canvas.Left="432" Canvas.Top="122" Margin="0,86,0,9" Source="Assets/Transportir.gif"/>
-            <TextBlock x:Name="textAngle" Canvas.Left="275" TextWrapping="Wrap" Text="0" Canvas.Top="102" Foreground="Black" FontSize="40" Margin="278,39,202,394"/>
-            <Canvas Name="MyCanvas" Background="Transparent" HorizontalAlignment="Left" Height="459" Margin="0,11,0,0" VerticalAlignment="Top" Width="776" MouseLeave="MyCanvas_MouseLeave"/>
-            <Button x:Name="CameraButton" Content="Camera" HorizontalAlignment="Left" Margin="574,10,0,0" VerticalAlignment="Top" Click="CameraButton_Click" Background="#FFFD0202"/>
+            <Image Canvas.Left="432" Canvas.Top="122" Margin="0,86,0,9" Source="Assets/Transportir.gif" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock x:Name="textAngle" Canvas.Left="275" TextWrapping="Wrap" Text="0`" Canvas.Top="102" FontSize="40" Margin="353,11,345,422" RenderTransformOrigin="0.5,0.447" TextAlignment="Center" Foreground="#FF020000"/>
+            <Canvas Name="MyCanvas" Background="Transparent" Height="459" Margin="0,11,0,0" VerticalAlignment="Top" MouseLeave="MyCanvas_MouseLeave" HorizontalAlignment="Center" Width="778"/>
+            <Button x:Name="CameraButton" Content="Camera" HorizontalAlignment="Left" Margin="574,10,0,0" VerticalAlignment="Top" Click="CameraButton_Click" Background="#FFFD0202" MouseEnter="CameraButton_MouseEnter" MouseLeave="CameraButton_MouseLeave"/>
         </Grid>
     </Grid>
 

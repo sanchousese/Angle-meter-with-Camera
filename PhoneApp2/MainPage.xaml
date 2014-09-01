@@ -15,15 +15,15 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="White">
-        <Rectangle Name="CameraLayout" Stroke="Black" >
-            <Rectangle.Fill>
-                <VideoBrush x:Name="viewfinderBrush"/>
-            </Rectangle.Fill>
-        </Rectangle>
         <Grid x:Name="ContentPanel" Margin="12,0,10,0" RenderTransformOrigin="0.5,0.5">
             <Grid.RenderTransform>
                 <RotateTransform x:Name="rotateTransform" />
             </Grid.RenderTransform>
+            <Rectangle Name="CameraLayout" Stroke="Black" >
+                <Rectangle.Fill>
+                    <VideoBrush x:Name="viewfinderBrush"/>
+                </Rectangle.Fill>
+            </Rectangle>
             <Image Name="TransportirImage" Canvas.Left="432" Canvas.Top="122" Margin="0,92,0,-6" Source="Assets/Transportir.gif" HorizontalAlignment="Center" VerticalAlignment="Center" Height="394" Width="778"/>
             <TextBlock x:Name="textAngle" Canvas.Left="275" TextWrapping="Wrap" Text="0`" Canvas.Top="102" FontSize="40" Margin="313,11,305,422" RenderTransformOrigin="0.5,0.5" TextAlignment="Center" Foreground="#FF020000">
                 <TextBlock.RenderTransform>

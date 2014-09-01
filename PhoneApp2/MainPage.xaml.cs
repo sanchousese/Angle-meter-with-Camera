@@ -30,6 +30,7 @@ namespace PhoneApp2
 
             this.OrientationChanged +=
              new EventHandler<OrientationChangedEventArgs>(OnOrientationChanged);
+
             Touch.FrameReported += new TouchFrameEventHandler(Touch_FrameReported);
 
             viewfinderBrush.SetSource(CameraSingleton.getInstance());
@@ -39,9 +40,16 @@ namespace PhoneApp2
         private void OnOrientationChanged(object sender, OrientationChangedEventArgs e)
         {
             if (e.Orientation == PageOrientation.LandscapeRight)
-                rotateTransform.Angle = 180;
+                rotateElements(180);
             else
-                rotateTransform.Angle = 0;
+                rotateElements(0);
+        }
+
+        private void rotateElements(byte angle)
+        {
+            rotateTransform.Angle = angle;
+            textBlockRotation.Rotation = angle;
+            buttonRotation.Rotation = angle;
         }
 
         private void Touch_FrameReported(object sender, TouchFrameEventArgs e)
@@ -63,7 +71,7 @@ namespace PhoneApp2
                         showPoints();
                     }
 
-                    if (checkAllPointsForIntersection(point))
+                    if (checkAllPointsForIntersectionWithTouch(point))
                         return;
 
                     currPoints = new Point[2];
@@ -98,14 +106,7 @@ namespace PhoneApp2
             isDrawingAble = true;
         } 
 
-
-
-        private bool isIntersect(Point first, Point second)
-        {
-            return Math.Abs(first.X - second.X) <= 30 && Math.Abs(first.Y - second.Y) <= 30;
-        }
-
-        private bool checkAllPointsForIntersection(Point point)
+        private bool checkAllPointsForIntersectionWithTouch(Point point)
         {
             for (int i = 0; i < 2; i++)
                 if (isIntersect(point, currPoints[i]))
@@ -120,6 +121,11 @@ namespace PhoneApp2
                     return true;
                 }
             return false;
+        }
+
+        private bool isIntersect(Point first, Point second)
+        {
+            return Math.Abs(first.X - second.X) <= 30 && Math.Abs(first.Y - second.Y) <= 30;
         }
 
         private void showPoint(Point point)

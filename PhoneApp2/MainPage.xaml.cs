@@ -125,7 +125,7 @@ namespace PhoneApp2
 
         private bool isIntersect(Point first, Point second)
         {
-            return Math.Abs(first.X - second.X) <= 30 && Math.Abs(first.Y - second.Y) <= 30;
+            return (first.X > 30 || first.Y > 30) && Math.Abs(first.X - second.X) <= 30 && Math.Abs(first.Y - second.Y) <= 30;
         }
 
         private void showPoint(Point point)

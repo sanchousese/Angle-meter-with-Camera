@@ -15,6 +15,7 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="White">
+        <Image Source="Assets/background.jpg"></Image>
         <Grid x:Name="ContentPanel" Margin="12,0,10,0" RenderTransformOrigin="0.5,0.5">
             <Grid.RenderTransform>
                 <RotateTransform x:Name="rotateTransform" />
@@ -24,18 +25,22 @@
                     <VideoBrush x:Name="viewfinderBrush"/>
                 </Rectangle.Fill>
             </Rectangle>
-            <Image Name="TransportirImage" Canvas.Left="432" Canvas.Top="122" Margin="0,92,0,-6" Source="Assets/Transportir.gif" HorizontalAlignment="Center" VerticalAlignment="Center" Height="394" Width="778"/>
-            <TextBlock x:Name="textAngle" Canvas.Left="275" TextWrapping="Wrap" Text="0`" Canvas.Top="102" FontSize="40" Margin="313,11,305,422" RenderTransformOrigin="0.5,0.5" TextAlignment="Center" Foreground="#FF020000">
+            <Image Name="TransportirImage" Canvas.Left="432" Canvas.Top="122" Margin="-144,58,-138,-6" Source="Assets/Transportir.gif" HorizontalAlignment="Center" VerticalAlignment="Center" Height="428" Width="1060"/>
+            <TextBlock x:Name="textAngle" Canvas.Left="275" TextWrapping="Wrap" Text="0`" Canvas.Top="102" FontSize="50" Margin="311,35,307,378" RenderTransformOrigin="0.5,0.5" TextAlignment="Center" Foreground="#FF020000">
                 <TextBlock.RenderTransform>
                     <CompositeTransform x:Name="textBlockRotation"/>
                 </TextBlock.RenderTransform>
             </TextBlock>
             <Canvas Name="MyCanvas" Background="Transparent" Height="480" Margin="0,0,0,0" VerticalAlignment="Top" MouseLeave="MyCanvas_MouseLeave" HorizontalAlignment="Center" Width="778"/>
-            <Button x:Name="CameraButton" Content="Camera" HorizontalAlignment="Left" Margin="574,10,0,0" VerticalAlignment="Top" Click="CameraButton_Click" Background="#FFFD0202" MouseEnter="CameraButton_MouseEnter" MouseLeave="CameraButton_MouseLeave" RenderTransformOrigin="0.5,0.5">
+            <Button x:Name="CameraButton" Content="Camera" HorizontalAlignment="Left" Margin="590,30,0,0" VerticalAlignment="Top" Click="CameraButton_Click" MouseEnter="CameraButton_MouseEnter" MouseLeave="CameraButton_MouseLeave" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Foreground="White" Height="90" Width="178" FontSize="29">
+                <Button.Background>
+                    <ImageBrush Stretch="Fill" ImageSource="Assets/button.gif"/>
+                </Button.Background>
                 <Button.RenderTransform>
                     <CompositeTransform x:Name="buttonRotation"/>
                 </Button.RenderTransform>
             </Button>
+
         </Grid>
     </Grid>
 
